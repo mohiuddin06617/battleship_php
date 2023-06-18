@@ -27,4 +27,21 @@ class Board
         $this->gameOver = false;
         $this->shots = 0;
     }
+
+    public function showHiddenBoard() {
+        echo "Hidden Board:\n";
+        $this->showBoard($this->hiddenBoard);
+    }
+
+    public function showGuessBoard() {
+        echo "Guess Board:\n";
+        $this->showBoard($this->guessBoard);
+    }
+
+    public function showBoard($board) {
+        echo "  1 2 3 4 5 6 7 8 9 10\n";
+        foreach ($board as $i => $row) {
+            echo chr(ord('A') + $i) . " " . implode(" ", $row) . "\n";
+        }
+    }
 }

@@ -15,4 +15,12 @@ Step 10 - Check if game is over. When the total number of ships is equal to sunk
 -->
 
 <?php
+define('BATTLESHIP', 5);
+define('DESTROYER', 4);
+
+$board = new Board();
+
+$battleship = new Ship("Battleship", BATTLESHIP);
+$destroyerOne = new Ship("Destroyer", DESTROYER);
+$destroyerTwo = new Ship("Destroyer", DESTROYER);
 ?>
