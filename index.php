@@ -23,4 +23,43 @@ $board = new Board();
 $battleship = new Ship("Battleship", BATTLESHIP);
 $destroyerOne = new Ship("Destroyer", DESTROYER);
 $destroyerTwo = new Ship("Destroyer", DESTROYER);
+
+
+function getCoordinates()
+{
+    while (true) {
+        echo "Enter coordinates (row, col), e.g. A5 = ";
+        $inputCoordinates = trim(fgets(STDIN));
+        $inputCoordinates = strtoupper($inputCoordinates);
+
+        if ($inputCoordinates === "SHOW") {
+            return "SHOW";
+        }
+        try {
+            $rowVal = ord($inputCoordinates[0]) - ord("A");
+            $colVal = intval(substr($inputCoordinates, 1)) - 1;
+
+            if ($rowVal >= 0 && $rowVal < ROW_SIZE && $colVal >= 0 && $colVal < COLUMN_SIZE) {
+                return [$rowVal, $colVal];
+            }
+            echo "Invalid Coordinates. Please provide valid coordinates.\n";
+        } catch (Exception $e) {
+            echo "Invalid Input. Please recheck and try again.\n";
+        }
+    }
+}
+
+while (!$board->gameOver) {
+    $board->showGuessBoard();
+    $coordinates = getCoordinates();
+
+    if ($coordinates === "SHOW") {
+        $board->showHiddenBoard();
+        continue;
+    }
+
+    [$row, $column] = $coordinates;
+
+    print_r($row, $column);
+}
 ?>
