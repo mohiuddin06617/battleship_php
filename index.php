@@ -66,11 +66,10 @@ while (!$board->gameOver) {
     }
 
     [$row, $column] = $coordinates;
-    // TODO: Shot to Ship in here
     $board->shotToShip($row, $column);
     $board->shots++;
 
-    // TODO: Check for game over
+    $board->checkForGameOver();
 
 }
 

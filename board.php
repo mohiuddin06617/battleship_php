@@ -153,6 +153,13 @@ class Board
             echo chr(ord('A') + $i) . " " . implode(" ", $row) . "\n";
         }
     }
+
+    public function checkForGameOver() {
+        if ($this->numOfShipsPlaced === $this->totalShipSunk) {
+            $this->gameOver = true;
+            echo "Well Done! You completed the game in {$this->shots} shots\n";
+        }
+    }
 }
 
 ?>
