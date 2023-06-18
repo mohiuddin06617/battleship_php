@@ -9,4 +9,8 @@ class Ship {
         $this->size = $size;
         $this->hits = 0;
     }
+
+    public function isSunk() {
+        return $this->hits === $this->size;
+    }
 }
