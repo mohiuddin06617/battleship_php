@@ -15,8 +15,13 @@ Step 10 - Check if game is over. When the total number of ships is equal to sunk
 -->
 
 <?php
+require_once "ship.php";
+require_once "board.php";
+
 define('BATTLESHIP', 5);
 define('DESTROYER', 4);
+define('ROW_SIZE', 10);
+define('COLUMN_SIZE', 10);
 
 $board = new Board();
 
@@ -24,6 +29,9 @@ $battleship = new Ship("Battleship", BATTLESHIP);
 $destroyerOne = new Ship("Destroyer", DESTROYER);
 $destroyerTwo = new Ship("Destroyer", DESTROYER);
 
+$board->shipPlacementProcess($battleship);
+$board->shipPlacementProcess($destroyerOne);
+$board->shipPlacementProcess($destroyerTwo);
 
 function getCoordinates()
 {
