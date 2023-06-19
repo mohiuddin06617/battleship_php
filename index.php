@@ -72,6 +72,4 @@ while (!$board->gameOver) {
     $board->checkForGameOver();
 
 }
-
-$board->showGuessBoard();
 ?>

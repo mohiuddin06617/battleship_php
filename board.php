@@ -125,11 +125,13 @@ class Board
             echo "*** Miss ***\n";
             $this->guessBoard[$row][$column] = "-";
         } elseif ($this->hiddenBoard[$row][$column] === "X") {
-            echo "*** Hit ***\n";
             $this->guessBoard[$row][$column] = "X";
             if ($this->checkForShipSunk($row, $column)) {
                 echo "*** Sunk ***\n";
                 $this->totalShipSunk++;
+            }
+            else{
+                echo "*** Hit ***\n";
             }
         }
     }
@@ -144,6 +146,9 @@ class Board
     {
         echo "Guess Board:\n";
         $this->showBoard($this->guessBoard);
+        if(!$this->gameOver){
+            echo "Ships Left: " . ($this->numOfShipsPlaced - $this->totalShipSunk) . "\n";
+        }
     }
 
     public function showBoard($board)
@@ -157,6 +162,7 @@ class Board
     public function checkForGameOver() {
         if ($this->numOfShipsPlaced === $this->totalShipSunk) {
             $this->gameOver = true;
+            $this->showGuessBoard();
             echo "Well Done! You completed the game in {$this->shots} shots\n";
         }
     }
