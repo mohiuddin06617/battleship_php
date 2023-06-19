@@ -3,7 +3,9 @@ function getArrayValuesByRange($board, $startRow, $startCol, $endRow, $endCol) {
     $arraySlice = [];
 
     for ($row = $startRow; $row <= $endRow; $row++) {
-        $arraySlice = array_merge($arraySlice, array_slice($board[$row], $startCol, $endCol - $startCol + 1));
+        for ($col = $startCol; $col <= $endCol; $col++) {
+            $arraySlice[] = $board[$row][$col];
+        }
     }
 
     return $arraySlice;
